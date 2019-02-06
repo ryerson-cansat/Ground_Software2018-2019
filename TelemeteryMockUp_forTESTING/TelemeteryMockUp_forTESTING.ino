@@ -1,10 +1,10 @@
 
 //Telemertery data, They are just random
-unsigned int TeamID = 1092; //1
+unsigned int TeamID = 1129; //1
 unsigned long timer = 0;//2
 unsigned long packetID = 0; // 3
 float altitude = 0;//4 
-float pressure = 0; //5
+float pressure = 101325; //5
 float temp;// = -10;//6
 float voltage = 5;//7
 float gTime = timer; //8
@@ -16,7 +16,7 @@ float pitch = 5; //13
 float roll = 10; //14
 float BSR = 8; //15
 float state = 0; //16
-float direct = 0; //17
+float direct = 0.0; //17
 float deploy = 0;
 
 float counter =0;
@@ -66,6 +66,7 @@ void loop() {
 
 void Transmit_data (){
     ++timer;
+    ++gTime;
   String toradio = "";
   toradio += TeamID;
   toradio += ",";

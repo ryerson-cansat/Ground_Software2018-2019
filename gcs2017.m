@@ -21,7 +21,7 @@ function varargout = gcs2017(varargin)
 
 % Edit the above text to modify the response to help gcs2017
 
-% Last Modified by GUIDE v2.5 03-Apr-2018 14:21:37
+% Last Modified by GUIDE v2.5 29-Jan-2019 20:34:58
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -122,7 +122,8 @@ global ard;
 selectedPort = get(handles.COMSelect,'Value');
 Portlist = get(handles.COMSelect,'String');
 comport = Portlist{selectedPort};
-obj = serial(selectedPort);
+
+obj = serial(comport);
 ard = connectFunction(comport, handles);
 
 
@@ -338,5 +339,12 @@ frameExtraction();
 % --- Executes on button press in currentStateButton.
 function currentStateButton_Callback(hObject, eventdata, handles)
 % hObject    handle to currentStateButton (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+
+% --- Executes on button press in calibrateButton.
+function calibrateButton_Callback(hObject, eventdata, handles)
+% hObject    handle to calibrateButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
