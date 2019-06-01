@@ -21,7 +21,7 @@ function varargout = gcs2017(varargin)
 
 % Edit the above text to modify the response to help gcs2017
 
-% Last Modified by GUIDE v2.5 29-Jan-2019 20:34:58
+% Last Modified by GUIDE v2.5 31-May-2019 20:55:35
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -227,7 +227,7 @@ function startBurnA_Callback(hObject, eventdata, handles)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 global ard;
-%fwrite(ard, 'A');
+fprintf(ard, '%c', 'A');
  
 
 
@@ -348,3 +348,15 @@ function calibrateButton_Callback(hObject, eventdata, handles)
 % hObject    handle to calibrateButton (see GCBO)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
+fprintf(ard,'%c', 'C');
+
+
+% --- Executes on key press with focus on stopTimer and none of its controls.
+function stopTimer_KeyPressFcn(hObject, eventdata, handles)
+% hObject    handle to stopTimer (see GCBO)
+% eventdata  structure with the following fields (see MATLAB.UI.CONTROL.UICONTROL)
+%	Key: name of the key that was pressed, in lower case
+%	Character: character interpretation of the key(s) that was pressed
+%	Modifier: name(s) of the modifier key(s) (i.e., control, shift) pressed
+% handles    structure with handles and user data (see GUIDATA)
+fprintf(ard,'%c','B');
