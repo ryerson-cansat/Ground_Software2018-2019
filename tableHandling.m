@@ -33,6 +33,9 @@ tele = strsplit(packet, ','); %Split the telemtry into seperate cells
 pk = str2num(tele{3}); %Get the packet count from the telemetry
 sS = str2num(tele{16});
 tID = str2num(tele{1});
+alt = str2num(tele{4});
+
+set(handles.altText,"String",alt);
 
 update_GUIcurrentStateButton(handles, sS); %Update the current state button in GUI
  
