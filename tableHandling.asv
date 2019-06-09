@@ -31,14 +31,8 @@ global matrix;
 
 tele = strsplit(packet, ','); %Split the telemtry into seperate cells
 
-sz = size(tele)
 
-if(sz(2) ~= 17)
-    totalNeeded = 17 - sz(2);
-    for j=1:totalNeeded
-        tele{end+j} = "-69";
-    end
-end
+tele = validateData(celltele);
 
 pk = str2num(tele{3}); %Get the packet count from the telemetry
 sS = str2num(tele{16});
@@ -61,11 +55,7 @@ add new rows to your global matrix.
 
 if(tID ~= 0)
     for i= 1:17
-        try
-            matrix.probe(pk, i) = str2num(tele{i}); %
-        catch EX
-            tele{i} = "-420";
-            matrix.probe(pk,i) = str2num(tele{i});
+        matrix.probe(pk, i) = str2num(tele{i}); %
     end
 
     updateGUI_probeTable(handles, matrix.probe, pk); %Update the ui Table
