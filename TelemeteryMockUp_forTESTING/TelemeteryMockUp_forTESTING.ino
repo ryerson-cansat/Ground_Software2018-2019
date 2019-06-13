@@ -102,6 +102,8 @@ void Transmit_data (){
   toradio += ",";
   toradio += direct;
 
+
+
   Serial.println (toradio);
   
 }

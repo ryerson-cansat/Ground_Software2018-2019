@@ -6,7 +6,7 @@ if(sz(2) ~= 17)
         tele{end+j} = "-69";
     end
     
-    for j=1:17
+    for j=1:sz(2)
         try
             str2double(tele{j});
         catch EX
