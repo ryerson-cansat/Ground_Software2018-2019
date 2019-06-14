@@ -1,4 +1,4 @@
-function [ard] = connectFunction(comport, handles)
+function [ard] = connectFunction(comport, handles, csvName)
 %   This file is called when the connect button is clicked on main GUI
 %   This file performs the following tasks:
 %   1. Open Serial port from comportport input variable
@@ -18,6 +18,8 @@ function [ard] = connectFunction(comport, handles)
     set(ard, 'BaudRate', 19200);
     set(ard, 'Parity', 'none');
     set(ard, 'InputBufferSize', 1000000);
+    
+    global gblCsvName;
 
     try %To stop and indicate that Radio is not connected
         fopen (ard); % Open comport
@@ -30,9 +32,11 @@ function [ard] = connectFunction(comport, handles)
     if (error == false)
         msgbox ('Serial successfully Connected!');  %Indicate connection ws a sucess  
         delete (timerfindall); %Delete all timer objects for initial setup.
-
+        pause on;
+        pause(1);
         % Create CSV File name with the Date as the given name
-        csvfilename = datestr(datetime); 
+        csvfilename = csvName;
+        gblCsvName = csvName;
         csvfilename = strrep(csvfilename, ':', '_'); % Strip invalid characters : to _
         table_filename = csvfilename;
         csvfile =1;

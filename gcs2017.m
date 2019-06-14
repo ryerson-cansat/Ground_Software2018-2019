@@ -21,7 +21,7 @@ function varargout = gcs2017(varargin)
 
 % Edit the above text to modify the response to help gcs2017
 
-% Last Modified by GUIDE v2.5 11-Jun-2019 01:04:04
+% Last Modified by GUIDE v2.5 13-Jun-2019 23:40:42
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -124,7 +124,7 @@ Portlist = get(handles.COMSelect,'String');
 comport = Portlist{selectedPort};
 
 obj = serial(comport);
-ard = connectFunction(comport, handles);
+ard = connectFunction(comport, handles, datestr(datetime));
 
 
 
@@ -370,3 +370,20 @@ function stopBurn_Callback(hObject, eventdata, handles)
 % handles    structure with handles and user data (see GUIDATA)
 global ard;
 fprintf(ard,'%c','B');
+
+
+% --- Executes on button press in rcnBtn.
+function rcnBtn_Callback(hObject, eventdata, handles)
+% hObject    handle to rcnBtn (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+
+global ard;
+global gblCsvName;
+selectedPort = get(handles.COMSelect,'Value');
+Portlist = get(handles.COMSelect,'String');
+comport = Portlist{selectedPort};
+
+obj = serial(comport);
+ard = connectFunction(comport, handles, gblCsvName);
+

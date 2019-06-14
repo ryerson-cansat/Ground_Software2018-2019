@@ -31,7 +31,7 @@ global matrix;
 
 tele = strsplit(packet, ','); %Split the telemtry into seperate cells
 
-sz = size(tele)
+sz = size(tele);
 
 if(sz(2) ~= 17)
     totalNeeded = 17 - sz(2);
@@ -39,6 +39,7 @@ if(sz(2) ~= 17)
         tele{end+j} = "-69";
     end
 end
+
 
 pk = str2num(tele{3}); %Get the packet count from the telemetry
 sS = str2num(tele{16});
