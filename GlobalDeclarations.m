@@ -1,5 +1,5 @@
 global matrix
 global gblCsvName;
 
-matrix.probe(1:17) = 0;
+matrix.probe(1:15) = 0;
 global ite

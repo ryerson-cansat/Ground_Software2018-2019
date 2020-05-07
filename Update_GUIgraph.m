@@ -1,8 +1,43 @@
-function [] = Update_GUIgraph(handles, table_filename)
+function [] = Update_GUIgraph(app)
 % First fill the tables with appropriate columns.
 % This function then takes the data in the table and plots it with
 % specifications from the axis popup menus.
 global matrix;
+
+app.probeData = matrix.probe;
+
+%xAxis = get(app.graphxAxis, 'Value');
+%yAxis = get(app.graphyAxis, 'Value');
+
+xAxis = app.graphXAxis.Value;
+yAxis = app.graphYAxis.Value;
+
+if(str2num(xAxis)>= 1 && str2num(xAxis)<= 15)
+    app.xProbe = app.probeData(:,int64(str2num(xAxis)+1));
+else
+    app.xProbe = 0;
+end
+
+if(str2num(yAxis)>= 1 && str2num(yAxis)<= 15)
+    app.yProbe = app.probeData(:,int64(str2num(yAxis)+1));
+else
+    app.yProbe = 0;
+end
+
+
+cla(app.UIAxes);
+%grid(app.Graph1, 'on');
+grid(app.UIAxes, 'on');
+    
+%plot(app.xProbe, app.yProbe, '.-b', 'Parent', app.Graph1);
+plot(app.UIAxes, app.xProbe, app.yProbe);
+hold(app.UIAxes,'on');
+
+app.UIAxes.XLabel.String = app.graphXAxis.Items(int64(str2num(xAxis)));
+app.UIAxes.YLabel.String = app.graphXAxis.Items(int64(str2num(yAxis)));
+%plot(app.xProbe, app.yProbe, '.-r','Parent', app.UIAxes);
+
+%{
 
 handles.probeData = matrix.probe;
 
@@ -92,4 +127,4 @@ plot(handles.xProbe, handles.yProbe, '.-b', 'Parent', handles.Graph1);
 hold(handles.Graph1,'on');
 
 plot(handles.xProbe, handles.yProbe, '.-r','Parent', handles.Graph1);
-
+%}

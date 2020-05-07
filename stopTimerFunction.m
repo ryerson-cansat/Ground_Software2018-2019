@@ -3,7 +3,7 @@ function [ ] = stopTimerFunction()
 %   Executed when stopTimer button is pushed.
 
     display('Stop Timer button clicked!');
-
+    
     % Look for all available timer logs
     if (numel(timerfindall) ~= 0)
         stop(timerfindall); % Stop all timers

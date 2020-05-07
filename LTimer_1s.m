@@ -1,9 +1,10 @@
-function [] = LTimer_1s(src, evt, ard, csvfile, csvfilename, handles,table_filename)
+function [] = LTimer_1s(src, evt, ard, csvfile, csvfilename, app,table_filename)
 %   Function performs the following tasks:
 %   1. If No new serial data is avilable function does nothing
 %   2. if serial data is avilable adds the new data to the .csv file log
 %   display ('csvlogger');
     global matrix;
+    app.DateTimeDisplay.Text = datestr(datetime);
     csvExt = strcat(csvfilename,'.csv');
     if (ard.BytesAvailable <= 0) % If no new data
         disp ('No New data in Serial port');
@@ -23,8 +24,9 @@ function [] = LTimer_1s(src, evt, ard, csvfile, csvfilename, handles,table_filen
             
         % This function updates table depending on packet 
         % Condition: Glider or Container column 2.
-        tableHandling(StringFromSerial, handles);
-        Update_GUIDateTimeDisplay(handles);
-       Update_GUIgraph(handles);
+        %tableHandling(StringFromSerial, handles);
+       tableHandling(StringFromSerial, app);
+        %Update_GUIDateTimeDisplay(handles);
+       Update_GUIgraph(app);
     end 
 end

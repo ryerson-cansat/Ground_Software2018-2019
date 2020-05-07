@@ -14,11 +14,45 @@ State 8 --> yellow (text --> black)
 
 %}
 
+function [] = update_GUIcurrentStateButton(app, sS)
+    switch(sS)
+        case 1
+            app.currentStateButton.BackgroundColor = [1,0,0];
+            app.currentStateButton.Text = "State: 1";
+        case 2
+            app.currentStateButton.BackgroundColor = [0,0,1];
+            app.currentStateButton.Text = "State: 2";
+        case 3
+            app.currentStateButton.BackgroundColor = [0.4,1,0.4];
+            app.currentStateButton.Text = "State: 3";
+        case 4
+            app.currentStateButton.BackgroundColor = [0.8,0.4,1];
+            app.currentStateButton.Text = "State: 4";
+        case 5
+            app.currentStateButton.BackgroundColor = [0.99,0.6,0.4];
+            app.currentStateButton.Text = "State: 5";
+        case 6
+            app.currentStateButton.BackgroundColor = [1,1,1];
+            app.currentStateButton.FontColor = [0,0,0];
+            app.currentStateButton.Text = "State: 6";
+        case 7
+            app.currentStateButton.BackgroundColor = [0,0,0];
+            app.currentStateButton.FontColor = [1,1,1];
+            app.currentStateButton.Text = "State: 7";
+            app.IsDeployedLamp.Color = [0,1,0];
+        case 8
+            app.currentStateButton.BackgroundColor = [1,1,0.39];
+            app.currentStateButton.FontColor = [0,0,0];
+            app.currentStateButton.Text = "State: 8";
+    end
+end
+%{
 function [] = update_GUIcurrentStateButton(handles, sS)
     switch(sS)
         case 1
             set(handles.currentStateButton, 'BackgroundColor',[1,0,0]);
             set(handles.currentStateButton, 'String','State: 1');
+            
         case 2
             set(handles.currentStateButton, 'BackgroundColor',[0,0,1]);
             set(handles.currentStateButton, 'String','State: 2');
@@ -47,4 +81,4 @@ function [] = update_GUIcurrentStateButton(handles, sS)
             set(handles.currentStateButton, 'String', 'State: 8');
     end
 end
-
+%}
